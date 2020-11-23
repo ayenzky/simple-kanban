@@ -11,3 +11,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+/*.column {
+	 border-radius: 5px;
+	 background-color: #615cf5;
+}
+*/
+.task {
+	border: 1px solid #ffffff;
+	padding: 10px;
+}
