@@ -5,6 +5,7 @@ import Column from './components/Column'
 import { Row, Container, Col, Button, Modal, Form } from 'react-bootstrap'
 import './index.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
+require("dotenv").config()
 
 const initialColumns = [
   {
@@ -51,11 +52,11 @@ function App() {
   const [tasks, setTasks] = useState(null)
 
   React.useEffect(() => {
-    fetch((process.env.API_URL || 'http://localhost:1337') + "/columns")
+    fetch((process.env.API_URL || "http://localhost:1337") + "/columns")
       .then((res) => res.json())
       .then((result) => setColumns(result))
 
-    fetch((process.env.API_URL || 'http://localhost:1337') + "/tasks")
+    fetch((process.env.API_URL || "http://localhost:1337") + "/tasks")
       .then((res) => res.json())
       .then((result) => setTasks(result))
   }, [])
@@ -68,7 +69,7 @@ function App() {
     const label = prompt("Column name");
     // label && setColumns([...columns, { id: label.toLowerCase(), label: label}])
     if(label) {
-      fetch((process.env.API_URL || 'http://localhost:1337') + "/columns", {
+      fetch((process.env.API_URL || "http://localhost:1337") + "/columns", {
         method: "POST",
         body: JSON.stringify({
           label
@@ -98,7 +99,7 @@ function App() {
     const label = value;
     // label && setTasks([...tasks, {id: label.toLowerCase(), label: label, column: id}])
     if(label) {
-      fetch((process.env.API_URL || 'http://localhost:1337') + "/tasks", {
+      fetch((process.env.API_URL || "http://localhost:1337") + "/tasks", {
         method: "POST",
         body: JSON.stringify({
           label,
@@ -120,7 +121,7 @@ function App() {
 
   const handleClickDeleteTask = (id) => {
     // setTasks(tasks.filter(task => task.id !== id))
-    fetch((process.env.API_URL || 'http://localhost:1337') + `/tasks/${id}`, {
+    fetch((process.env.API_URL || "http://localhost:1337") + `/tasks/${id}`, {
       method: "DELETE",
       headers: {
         'Content-Type': "application/json"
@@ -128,14 +129,14 @@ function App() {
     })
     .then((res) => res.json())
     .then((result) => {
-        fetch((process.env.API_URL || 'http://localhost:1337') + "/tasks")
+        fetch((process.env.API_URL || "http://localhost:1337") + "/tasks")
         .then((res) => res.json())
         .then((result) => setTasks(result))
     })
   }
   const handleClickDeleteColumn = (id) => {
     // setColumns(columns.filter(column => column.id !== id))
-    fetch((process.env.API_URL || 'http://localhost:1337') + `/columns/${id}`, {
+    fetch((process.env.API_URL || "http://localhost:1337") + `/columns/${id}`, {
       method: "DELETE",
       headers: {
         'Content-Type': "application/json"
@@ -143,7 +144,7 @@ function App() {
     })
     .then((res) => res.json())
     .then((result) => {
-        fetch((process.env.API_URL || 'http://localhost:1337') + "/columns")
+        fetch((process.env.API_URL || "http://localhost:1337") + "/columns")
         .then((res) => res.json())
         .then((result) => setColumns(result))
     })
@@ -169,7 +170,7 @@ function App() {
     let taskId = e.dataTransfer.getData("id")
     // console.log("data", data);
     // console.log("taskId", taskId);
-    fetch((process.env.API_URL || 'http://localhost:1337') + `/tasks/${taskId}`,{
+    fetch((process.env.API_URL || "http://localhost:1337") + `/tasks/${taskId}`,{
       method: "PUT",
       body: JSON.stringify({
         column: id
@@ -180,7 +181,7 @@ function App() {
     })
     .then((res) => res.json())
     .then((result) => {
-        fetch((process.env.API_URL || 'http://localhost:1337') + "/tasks")
+        fetch((process.env.API_URL || "http://localhost:1337") + "/tasks")
         .then((res) => res.json())
         .then((result) => setTasks(result))
     })
