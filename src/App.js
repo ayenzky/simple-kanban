@@ -2,47 +2,9 @@ import React, { useState } from 'react'
 // import Container from './components/Container'
 // import Button from './components/Button'
 import Column from './components/Column'
-import { Row, Container, Col, Button, Modal, Form } from 'react-bootstrap'
+import { Row, Container, Col, Button, Modal, Form, Card } from 'react-bootstrap'
 import './index.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-require("dotenv").config()
-
-const initialColumns = [
-  {
-    id: "todo",
-    label: "Todo"
-  },
-  {
-    id: "in-progress",
-    label: "In Progress"
-  },
-  {
-    id: "completed",
-    label: "Completed"
-  }
-]
-
-const initialTasks = [
-  {
-    id: "buy-egss",
-    label:  "Buy eggs",
-    column: "todo",
-    order: 0
-  },
-   {
-    id: "cook-dinner",
-    label:  "Cook dinner",
-    column: "todo",
-    order: 1
-  },
-  {
-    id: "creating-mockup",
-    label:  "Creating mockup",
-    column: "in-progress",
-    order: 2
-  },
-
-]
 
 function App() {
   const [show, setShow] = useState(false);
@@ -166,7 +128,7 @@ function App() {
   }
 
   const onDrop=(e, id)=> {
-    let data = e.dataTransfer.getData("label")
+    // let data = e.dataTransfer.getData("label")
     let taskId = e.dataTransfer.getData("id")
     // console.log("data", data);
     // console.log("taskId", taskId);
@@ -212,8 +174,16 @@ function App() {
               actions={{handleOpen, handleClickDeleteColumn, handleClickDeleteTask, onDragStart, onDrop, onDragOver}}
               getTasksByColumnId={getTasksByColumnId}
             />
-            <Col xs="auto">
-              <Button variant="outline-secondary" onClick={handleClickAddColumn}>Add new column</Button>  
+            <Col xs="mb-4" md={3}>
+            <Card 
+              bg="white"
+              className="rounded">
+              <Button id="btn-add-column" variant="outline-light" onClick={handleClickAddColumn}>
+                <div className="add-column">+</div>
+                <div className="add-column-text">Add column</div>
+              </Button>
+            </Card>
+             
             </Col>
           </Row>
           <div>

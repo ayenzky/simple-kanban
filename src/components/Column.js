@@ -20,7 +20,7 @@ const Columns =({
       >
       	<Card 
       		bg="dark"
-      		className="h-100 rounded border-dark">
+      		className="rounded border-dark">
       	  <Card.Header as="h3" className="text-white">{column.label}</Card.Header>
       	  <Card.Body>
       	  	<Task
