@@ -15,7 +15,7 @@ function Login() {
 		e.preventDefault();
 		const form = e.currentTarget;
 		const { password, identifier } = form.elements
-		fetch('http://localhost:1337/auth/local', {
+		fetch((process.env.REACT_APP_API_URL || "http://localhost:1337") + "/auth/local", {
 			method: "POST",
 			headers: {
 				'Content-Type': 'application/json'
