@@ -43,3 +43,12 @@ code {
   line-height: 0;
 
 }
+
+.btn.btn-link#logout {
+  padding: 0;
+  height: auto;
+  margin: 0 0.5rem;
+  color: var(--danger);
+  outline: none;
+  box-shadow: none;
+}
